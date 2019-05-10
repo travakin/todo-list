@@ -1,0 +1,15 @@
+<h2>List:</h2>
+<button (click)="onShowAll()"> Show All </button><button (click)="onOrderAlphabet()"> Alphabetical Order </button><button (click)="onOrderAlphabetReverse()"> Reverse Alphabetical Order </button><button (click)="onHideComplete()"> Hide Complete </button>
+<br />
+<br />
+<div>
+    <label>Add To-Do Item: </label>
+    <input type="text" #AddInput/><button (click)="onAdd(AddInput.value)">Add</button>
+</div>
+
+<ul class="items">
+    <li *ngFor="let item of items" (click)="onSelect(item)" [class.selected]="item===selectedItem" [hidden]='!item.show'>
+       <input [(ngModel)]="item.content" /><span (click)="onDelete(item)"> X </span><span [hidden]="item.isDone" (click)="onComplete(item)" >Done</span><span [hidden]="!item.isDone" (click)="onComplete(item)">   &#10004;</span>
+    </li>
+</ul>
+
